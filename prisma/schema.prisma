@@ -1,0 +1,45 @@
+enum Roles {
+  USER
+  ADMIN
+}
+
+model Customer {
+  id           String @id @default(cuid())
+  email        String @unique
+  password     String
+  passwordSalt String
+  isVerified   Boolean @default(false)
+  role         Roles  @default(USER)
+
+  signupOtp CustomerSignupOtp?
+  tokenInfo TokenInfo[]
+}
+
+model CustomerSignupOtp {
+  id               String   @id @default(cuid())
+  customerId       String   @unique
+  verificationCode String
+  expiry           DateTime
+
+  customer Customer @relation(fields: [customerId], references: [id])
+}
+
+model TokenInfo {
+  id String @id @default(cuid())
+  customerId String
+  refreshToken String @unique
+  exipry DateTime
+
+  customer Customer @relation(fields: [customerId], references: [id])
+}
+
+generator client {
+  provider      = "prisma-client-js"
+  output        = "../src/db"
+  binaryTargets = ["native"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
