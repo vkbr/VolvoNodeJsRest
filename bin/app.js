@@ -4,13 +4,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 var _a;
 Object.defineProperty(exports, "__esModule", { value: true });
-// import cookieParser from 'cookie-parser';
 const express_1 = __importDefault(require("express"));
 const morgan_1 = __importDefault(require("morgan"));
 const node_http_1 = require("node:http");
+require("./utils/env");
 const middlewares_1 = require("./middlewares");
 const routes_1 = require("./routes");
-require("./types/express");
 const port = parseInt((_a = process.env.PORT) !== null && _a !== void 0 ? _a : '8080', 10);
 var app = (0, express_1.default)();
 app.use((0, morgan_1.default)('dev'));
