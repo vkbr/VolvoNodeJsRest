@@ -5,7 +5,7 @@
   "scripts": {
     "start": "node ./bin/app",
     "dev": "nodemon --config nodemon.json",
-    "build": "tsc",
+    "build": "tsc && cp -r src/db bin/db",
     "p:fmt": "prisma format",
     "p:gen": "prisma generate"
   },

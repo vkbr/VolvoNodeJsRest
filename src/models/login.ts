@@ -25,31 +25,3 @@ export class SignupRequest {
     return Builder<SignupRequest>;
   }
 }
-
-// export class SuccessLoginResponse {
-//   user!: User;
-
-//   tokenInfo!: TokenInfo;
-
-//   static fromJSON(json: object): SuccessLoginResponse {
-//     return SuccessLoginResponse.builder(json).build();
-//   }
-
-//   static get builder() {
-//     return Builder<SuccessLoginResponse>;
-//   }
-// }
-
-// export class LoginResponse {
-//   data?: SuccessLoginResponse;
-
-//   error?: ErrorResponse;
-
-//   static fromJSON(json: object): LoginResponse {
-//     return LoginResponse.builder(json).build();
-//   }
-
-//   static get builder() {
-//     return Builder<LoginResponse>;
-//   }
-// }
